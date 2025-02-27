@@ -65,6 +65,7 @@ public class SMTPSendMail {
         send("SUBJECT: 3Y2S2023" );
         send("Mail Body here" );
         send("Mac: " + getMac());
+        send("IP: " + getIPAddress());
         send(LocalDateTime.now().toString());       
         send(".");
         System.out.println("Server: " + in.readLine());
@@ -104,6 +105,12 @@ public class SMTPSendMail {
         out.flush();
         Thread.sleep(1000);
         System.out.println("Client: " + message);
+    }
+
+    // ✅ Get Sender's IP Address
+    private static String getIPAddress() throws Exception {
+        InetAddress ip = InetAddress.getLocalHost();
+        return ip.getHostAddress();  // Returns IPv4 Address
     }
     
     
